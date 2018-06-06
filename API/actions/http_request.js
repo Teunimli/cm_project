@@ -5,10 +5,17 @@ module.exports = {
         request(url, function (err, res, body) {
             if (res) {
                 if (res.statusCode !== 200) {
-                    return (false);
+                    console.log('hij komt bij de false in http')
+                    return false;
+                }
+                else{
+                    console.log('hij komt bij de true in hahahahttp')
+                    return true;
+
                 }
             } else {
-                return (true);
+                console.log('hij komt bij de true in http')
+                return true;
             }
         });
     },
