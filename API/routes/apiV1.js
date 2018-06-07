@@ -13,6 +13,6 @@ router.all("*", function (req, res, next) {
 });
 
 //
-router.post('/domain_checker', domainCheckerController.CheckDomain);
+router.post('/domain_checker', domainCheckerController.flowDomainChecker);
 
 module.exports = router;
