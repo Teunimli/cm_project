@@ -8,7 +8,7 @@ module.exports = {
                 "Content-Type": "application/json",
             };
             let options = {
-                url: 'https://gw.cmtelecom.com/v1.0/message',
+                url: 'https://api.cmtelecom.com/voiceapi/v2/Notification',
                 method: 'POST',
                 headers: headers,
                 json: true,
