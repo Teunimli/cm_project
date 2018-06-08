@@ -2,10 +2,11 @@ const request = require('request');
 
 module.exports = {
 
-    sendVoice(callee, caller, anonymous, message){
+    sendVoice(token, callee, caller, anonymous, message){
         return new Promise((resolve) => {
             let headers = {
                 "Content-Type": "application/json",
+                "X-CM-PRODUCTTOKEN": token
             };
             let options = {
                 url: 'https://api.cmtelecom.com/voiceapi/v2/Notification',
@@ -13,14 +14,14 @@ module.exports = {
                 headers: headers,
                 json: true,
                 body: {
-                    "callee": "0031642338343",
-                    "caller": "0031657618707",
-                    "anonymous": false,
-                    "prompt": "Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? Hoe gaat het? ",
+                    "callee": callee,
+                    "caller": caller,
+                    "anonymous": anonymous,
+                    "prompt": prompt(),
                     "prompt-type": "TTS",
                     "voice": {
                         "language": "nl-NL",
-                        "gender": "Male",
+                        "gender": "Female",
                         "number": 1
                     }
                 }
