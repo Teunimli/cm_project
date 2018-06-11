@@ -17,7 +17,7 @@ module.exports = {
                     "callee": callee,
                     "caller": caller,
                     "anonymous": anonymous,
-                    "prompt": prompt(),
+                    "prompt": message,
                     "prompt-type": "TTS",
                     "voice": {
                         "language": "nl-NL",
