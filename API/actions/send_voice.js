@@ -2,7 +2,7 @@ const request = require('request');
 
 module.exports = {
 
-    sendVoice(token, callee, caller, anonymous, message){
+    sendVoice(token, callee, caller, anonymous, message) {
         return new Promise((resolve) => {
             let headers = {
                 "Content-Type": "application/json",
@@ -20,7 +20,7 @@ module.exports = {
                     "prompt": message,
                     "prompt-type": "TTS",
                     "voice": {
-                        "language": "nl-NL",
+                        "language": "en-GB",
                         "gender": "Female",
                         "number": 1
                     }
@@ -30,16 +30,15 @@ module.exports = {
             request(options, function (err, res, body) {
                 if (res) {
                     if (res.statusCode !== 200) {
+                        console.log(res.statusCode)
                         console.log('hij komt bij de false in voice validation')
                         resolve(false);
-
                     } else {
-
                         console.log('hij komt bij de true in voice validation')
-                        return (true);
+                        resolve(true);
                     }
                 }
-
             });
         });
-}
+    }
+};
