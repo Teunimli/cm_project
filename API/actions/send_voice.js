@@ -17,7 +17,7 @@ module.exports = {
                     "callee": callee,
                     "caller": caller,
                     "anonymous": anonymous,
-                    "prompt": prompt(),
+                    "prompt": message,
                     "prompt-type": "TTS",
                     "voice": {
                         "language": "nl-NL",
@@ -26,5 +26,20 @@ module.exports = {
                     }
                 }
             };
+
+            request(options, function (err, res, body) {
+                if (res) {
+                    if (res.statusCode !== 200) {
+                        console.log('hij komt bij de false in voice validation')
+                        resolve(false);
+
+                    } else {
+
+                        console.log('hij komt bij de true in voice validation')
+                        return (true);
+                    }
+                }
+
+            });
         });
 }
