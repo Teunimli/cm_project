@@ -4,7 +4,7 @@ module.exports = {
     sendSMS(req, res) {
         let json = req.body;
 
-        sms.sendSMS(json.token, json.content, json.numbers, json.from).then((bool) => {
+        sms.sendSMS(json.token, json.content, json.to, json.from).then((bool) => {
             console.log(bool);
             if (bool) {
                 console.log(bool);
