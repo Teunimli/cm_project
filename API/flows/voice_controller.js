@@ -12,6 +12,9 @@ module.exports = {
                     "Message": "Call send out"
                 });
             }
+            else{
+                res.status(0);
+            }
         });
     }
 };
