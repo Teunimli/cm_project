@@ -1,5 +1,6 @@
 const getPaymentToken = require('../actions/payment_getToken');
 const payment = require('../actions/payment');
+var sendSms = require('../actions/send_sms');
 
 
 module.exports = {
@@ -11,9 +12,7 @@ module.exports = {
                 payment.getPayment (json.amount, json.merchant_reference, accessToken).then((body) => {
                     if (!false) {
                         res.status(200);
-                        res.send({
-                            "URL": body.uri
-                        });
+                        sendSms.sendSMS(json.token, "De payment link is: " + body.uri, json.phoneNumber, "CM"); 
                     }
                 });
             }
