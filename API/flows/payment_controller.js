@@ -10,9 +10,21 @@ module.exports = {
         getPaymentToken.getPaymentToken(json.client_id, json.client_secret).then((accessToken) => {
             if (accessToken) {
                 payment.getPayment (json.amount, json.merchant_reference, accessToken).then((body) => {
-                    if (!false) {
-                        res.status(200);
-                        sendSms.sendSMS(json.token, "De payment link is: " + body.uri, json.phoneNumber, "CM"); 
+                    if (body) {
+                        sendSms.sendSMS(json.token, "De payment link is: " + body.uri, json.phoneNumber, "CM").then((bool) => {
+                            if (bool){
+                                res.status(200);
+                                res.send({
+                                    "Message": "SMS send out"
+                                });
+                            }
+                            else {
+                                res.status(409);
+                                res.send({
+                                    "Message": "Something went wrong"
+                                });
+                            }
+                        });
                     }
                 });
             }
